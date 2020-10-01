@@ -1,0 +1,39 @@
+Square cua1, cua2;
+
+void setup() {
+  size(700, 500);
+  smooth();
+  noStroke();
+  cua1= new Square(200, 0,  100, 1);
+  cua2= new Square(350, 0, 100, 2);
+}
+
+void draw() {
+  background(145,0,255);
+  cua1.move();
+  cua2.move();
+  cua1.display();
+  cua2.display();
+}
+
+class Square {
+  float x, y, b, speed;
+  int direct=1;
+  Square(float xpos, float ypos, float g, float sp) {
+    x=xpos;
+    y=ypos;
+    b=g;
+    speed=sp;
+  }
+  void display() {
+    rect(x, y, b, b);
+  }
+
+  void move() {
+    y += (speed * direct);
+    if ((y > (height - b / 2)) || (y < b / 2)) {
+      direct *= 1;
+     
+    }  
+    }
+}

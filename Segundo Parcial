@@ -9,14 +9,14 @@ float val;      // Data received from the serial port
 
 void setup() {
   size(400, 600);
-  String nombrePuerto = "COM5";
-  miSerial = new Serial(this, nombrePuerto, 9600);
+  //String nombrePuerto = "COM5";
+  //miSerial = new Serial(this, nombrePuerto, 9600);
 }
 
 void draw() {
-  if ( miSerial.available() > 0) {  // If data is available,
-    val = miSerial.read();         // read it and store it in val
-  }
+  //if ( miSerial.available() > 0) {  // If data is available,
+  //val = miSerial.read();         // read it and store it in val
+  //}
   background(255);
   if (estadoBoton) {
     fill(colorEncendido);
@@ -32,6 +32,6 @@ void mouseClicked() {
  println(distancia);
  if (distancia<175){
      estadoBoton = !estadoBoton;
-     miSerial.write('a');
+     //miSerial.write('a');
    }
 }

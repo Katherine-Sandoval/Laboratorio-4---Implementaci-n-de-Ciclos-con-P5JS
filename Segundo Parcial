@@ -1,0 +1,37 @@
+import processing.serial.*;
+
+boolean estadoBoton = false;
+Serial miSerial;
+color colorApagado = color(200, 0, 0);
+color colorEncendido = color(0, 200, 0);
+float distancia;
+float val;      // Data received from the serial port
+
+void setup() {
+  size(400, 600);
+  String nombrePuerto = "COM5";
+  miSerial = new Serial(this, nombrePuerto, 9600);
+}
+
+void draw() {
+  if ( miSerial.available() > 0) {  // If data is available,
+    val = miSerial.read();         // read it and store it in val
+  }
+  background(255);
+  if (estadoBoton) {
+    fill(colorEncendido);
+  } else {
+    fill(colorApagado);
+  }
+  ellipse(200,200,350,350); 
+}
+
+void mouseClicked() {
+ println(mouseX,mouseY);
+ distancia = dist(200,200,mouseX,mouseY);
+ println(distancia);
+ if (distancia<175){
+     estadoBoton = !estadoBoton;
+     miSerial.write('a');
+   }
+}
